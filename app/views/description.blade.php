@@ -1,4 +1,4 @@
-<?php
+@php
 $step = $devcycle_client->variableValue($user_data, "example-text", "default");
 
 switch ($step) {
@@ -18,11 +18,11 @@ switch ($step) {
         $header = "Welcome to DevCycle's example app.";
         $body = "If you got to the example app on your own, follow our README guide to create the Feature and Variables you need to control this app in DevCycle.";
 }
-?>
+@endphp
 
 <div class="App-description">
     <div>
-      <h3><?= $header ?></h3>
-      <p><?= $body ?></p>
+      <h3>{{ $header }}</h3>
+      <p>{{ $body }}</p>
     </div>
 </div>

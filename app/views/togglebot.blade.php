@@ -1,10 +1,13 @@
-<?php
+@php
+
 $features = $devcycle_client->allFeatures($user_data);
+
 $variation_name = $features["hello-togglebot"]
     ? $features["hello-togglebot"]["variationName"]
     : "Default";
 
 $speed = $devcycle_client->variableValue($user_data, "togglebot-speed", "off");
+
 $wink = $devcycle_client->variableValue($user_data, "togglebot-wink", false);
 
 switch ($speed) {
@@ -25,23 +28,22 @@ switch ($speed) {
         break;
 }
 
-$togglebot_src = $wink ? '/images/togglebot-wink.png' : '/images/togglebot.png';
+$togglebot_src = $wink ? 'public/assets/img/togglebot-wink.png' : 'public/assets/img/togglebot.png';
 if ($speed === 'surprise') {
-    $togglebot_src = '/images/unicorn.svg';
+    $togglebot_src = 'public/assets/img/unicorn.svg';
 }
-
-?>
+@endphp
 
 <div class="App-content">
     <div class="ToggleBot-message">
-        "<?= $message ?>"
+        "{{$message}}"
     </div>
     <img
-        src="<?= $togglebot_src ?>"
-        class="ToggleBot-logo spin-<?= $speed ?>"
+        src="{{ $togglebot_src }}"
+        class="ToggleBot-logo spin-{{$speed}}"
         alt="togglebot"
     />
     <div class="ToggleBot-variation">
-        Serving Variation: <b>"<?= $variation_name ?>"</b>
+        Serving Variation: <b>"{{$variation_name}}"</b>
     </div>
 </div>
